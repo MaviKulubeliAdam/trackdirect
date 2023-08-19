@@ -22,10 +22,10 @@
     <title><?php echo $station->name; ?> Raw Packets</title>
     <div class="modal-inner-content">
         <div class="modal-inner-content-menu">
-            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Overview</a>
-            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Statistics</a>
+            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Özet</a>
+            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">İstatistikler</a>
             <a class="tdlink" title="Trail Chart" href="/views/trail.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Trail Chart</a>
-            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Weather</a>
+            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Hava Durumu</a>
             <a class="tdlink" title="Telemetry" href="/views/telemetry.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Telemetry</a>
             <span>Raw packets</span>
         </div>
@@ -50,7 +50,7 @@
             <?php if ($station->stationTypeId == 1) : ?>
                 <select id="raw-category" style="float:left; margin-right: 5px;">
                     <option <?php echo (($_GET['category'] ?? 1) == 1 ? 'selected' : ''); ?> value="1">Packets regarding <?php echo $station->name; ?></option>
-                    <option <?php echo (($_GET['category'] ?? 1) == 2 ? 'selected' : ''); ?> value="2">Packets sent by <?php echo $station->name; ?></option>
+                    <option <?php echo (($_GET['category'] ?? 1) == 2 ? 'selected' : ''); ?> value="2">Paket <?php echo $station->name; ?> tarafından gönderildi </option>
                 </select>
             <?php endif; ?>
 
@@ -136,11 +136,11 @@
                                     <?php if ($packet->getStationObject()->stationTypeId == 2) : ?>
                                         <tr><td>Object/Item name</td><td><?php echo htmlspecialchars($packet->getStationObject()->name); ?></td></tr>
                                     <?php else : ?>
-                                        <tr><td>Callsign</td><td><?php echo htmlspecialchars($packet->getStationObject()->name); ?></td></tr>
+                                        <tr><td>Çağri İşareti</td><td><?php echo htmlspecialchars($packet->getStationObject()->name); ?></td></tr>
                                     <?php endif; ?>
 
                                     <?php if ($packet->getStationObject()->name != $packet->getSenderObject()->name) : ?>
-                                        <tr><td>Sender</td><td><?php echo htmlspecialchars($packet->getSenderObject()->name); ?></td></tr>
+                                        <tr><td>Gönderen</td><td><?php echo htmlspecialchars($packet->getSenderObject()->name); ?></td></tr>
                                     <?php endif; ?>
 
                                     <tr><td>Path</td><td><?php echo htmlspecialchars($packet->rawPath); ?></td></tr>
@@ -155,15 +155,15 @@
                                     <?php endif; ?>
 
                                     <?php if ($packet->symbol != null && $packet->symbolTable != null) : ?>
-                                        <tr><td>Symbol</td><td><?php echo htmlspecialchars($packet->symbol); ?></td></tr>
-                                        <tr><td>Symbol table</td><td><?php echo htmlspecialchars($packet->symbolTable); ?></td></tr>
+                                        <tr><td>Sembol</td><td><?php echo htmlspecialchars($packet->symbol); ?></td></tr>
+                                        <tr><td>Sembol Tablosu</td><td><?php echo htmlspecialchars($packet->symbolTable); ?></td></tr>
                                     <?php endif; ?>
 
                                     <?php if ($packet->speed != null) : ?>
                                         <?php if (isImperialUnitUser()) : ?>
-                                            <tr><td>Speed</td><td><?php echo convertKilometerToMile($packet->speed); ?> mph</td></tr>
+                                            <tr><td>Hiz</td><td><?php echo convertKilometerToMile($packet->speed); ?> mph</td></tr>
                                         <?php else : ?>
-                                            <tr><td>Speed</td><td><?php echo $packet->speed; ?> km/h</td></tr>
+                                            <tr><td>Hiz</td><td><?php echo $packet->speed; ?> km/h</td></tr>
                                         <?php endif; ?>
                                     <?php endif; ?>
 
@@ -209,19 +209,19 @@
                                         <?php $weather = $packet->getPacketWeather(); ?>
                                         <?php if ($weather->isExistingObject()) : ?>
                                             <tr>
-                                                <td>Weather</td>
+                                                <td>Hava Durumu</td>
                                                 <td>
                                                     <table>
                                                         <tbody>
                                                             <?php if ($weather->wxRawTimestamp !== null) : ?>
                                                                 <tr>
-                                                                    <td>Time:</td><td><span class="raw-packet-timestamp"><?php echo $weather->wxRawTimestamp; ?></span></td>
+                                                                    <td>Zaman:</td><td><span class="raw-packet-timestamp"><?php echo $weather->wxRawTimestamp; ?></span></td>
                                                                 </tr>
                                                             <?php endif; ?>
 
                                                             <?php if ($weather->temperature !== null) : ?>
                                                                 <tr>
-                                                                    <td>Temperature:</td>
+                                                                    <td>Sicaklik:</td>
                                                                     <?php if (isImperialUnitUser()) : ?>
                                                                         <td><?php echo round(convertCelciusToFahrenheit($weather->temperature), 2); ?>&deg; F</td>
                                                                     <?php else : ?>
@@ -232,14 +232,14 @@
 
                                                             <?php if ($weather->humidity !== null) : ?>
                                                                 <tr>
-                                                                    <td>Humidity:</td>
+                                                                    <td>Nem:</td>
                                                                     <td><?php echo $weather->humidity; ?>%</td>
                                                                 </tr>
                                                             <?php endif; ?>
 
                                                             <?php if ($weather->pressure !== null) : ?>
                                                                 <tr>
-                                                                    <td>Pressure:</td>
+                                                                    <td>Basinç:</td>
                                                                     <?php if (isImperialUnitUser()) : ?>
                                                                         <td><?php echo round(convertMbarToMmhg($weather->pressure),1); ?> mmHg</td>
                                                                     <?php else : ?>
@@ -284,12 +284,12 @@
                                                             <?php if (isImperialUnitUser()) : ?>
                                                                 <?php if ($weather->wind_speed !== null && $weather->wind_speed > 0) : ?>
                                                                     <tr>
-                                                                        <td>Wind Speed:</td>
+                                                                        <td>Rüzgar Hizi:</td>
                                                                         <td><?php echo round(convertMpsToMph($weather->wind_speed), 2); ?> mph, <?php echo $weather->wind_direction; ?>&deg;</td>
                                                                     </tr>
                                                                 <?php elseif($weather->wind_speed !== null) : ?>
                                                                     <tr>
-                                                                        <td>Wind Speed:</td>
+                                                                        <td>Rüzgar Hizi:</td>
                                                                         <td><?php echo round(convertMpsToMph($weather->wind_speed), 2); ?> mph</td>
                                                                     </tr>
                                                                 <?php endif; ?>
@@ -297,7 +297,7 @@
                                                             <?php else : ?>
                                                                 <?php if ($weather->wind_speed !== null && $weather->wind_speed > 0) : ?>
                                                                     <tr>
-                                                                        <td>Wind Speed:</td>
+                                                                        <td>Rüzgar Hizi:</td>
                                                                         <td><?php echo round($weather->wind_speed, 2); ?> m/s, <?php echo $weather->wind_direction; ?>&deg;</td>
                                                                     </tr>
                                                                 <?php elseif($weather->wind_speed !== null) : ?>
@@ -317,9 +317,9 @@
                                                             <?php if ($weather->snow !== null) : ?>
                                                                 <tr>
                                                                 <?php if (isImperialUnitUser()) : ?>
-                                                                    <td>Snow:</td><td><?php echo round(convertMmToInch($weather->snow), 0); ?> in</td>
+                                                                    <td>Kar:</td><td><?php echo round(convertMmToInch($weather->snow), 0); ?> in</td>
                                                                 <?php else : ?>
-                                                                    <td>Snow:</td><td><?php echo round($weather->snow, 0); ?> mm</td>
+                                                                    <td>Kar:</td><td><?php echo round($weather->snow, 0); ?> mm</td>
                                                                 <?php endif; ?>
                                                                 </tr>
                                                             <?php endif; ?>

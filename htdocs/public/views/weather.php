@@ -15,11 +15,11 @@
         $pages = ceil($count / $rows);
     ?>
 
-    <title><?php echo $station->name; ?> Weather</title>
+    <title><?php echo $station->name; ?> Hava Durumu</title>
     <div class="modal-inner-content">
         <div class="modal-inner-content-menu">
-            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Overview</a>
-            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Statistics</a>
+            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Özet</a>
+            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">İstatistikler</a>
             <a class="tdlink" title="Trail Chart" href="/views/trail.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Trail Chart</a>
             <span>Weather</span>
             <a class="tdlink" title="Telemetry" href="/views/telemetry.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Telemetry</a>
@@ -57,14 +57,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Time</th>
-                            <th>Temp.</th>
-                            <th>Humidity</th>
-                            <th>Pressure</th>
-                            <th>Rain*</th>
-                            <th>Wind**</th>
-                            <th>Luminosity</th>
-                            <th>Snow</th>
+                            <th>Zaman</th>
+                            <th>Sicaklik.</th>
+                            <th>Nem</th>
+                            <th>Basinç</th>
+                            <th>Yağmur*</th>
+                            <th>Rüzgar**</th>
+                            <th>Gün Işiği</th>
+                            <th>Kar</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -14,10 +14,10 @@
     <title><?php echo $station->name; ?> Stats</title>
     <div class="modal-inner-content">
         <div class="modal-inner-content-menu">
-            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Overview</a>
-            <span>Statistics</span>
+            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Özet</a>
+            <span>İstatistikler</span>
             <a class="tdlink" title="Trail Chart" href="/views/trail.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Trail Chart</a>
-            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Weather</a>
+            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Hava Durumu</a>
             <a class="tdlink" title="Telemetry" href="/views/telemetry.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Telemetry</a>
             <a class="tdlink" title="Raw packets" href="/views/raw.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Raw packets</a>
         </div>
@@ -34,8 +34,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Station</th>
-                            <th>Number of packets</th>
+                            <th>İstasyon</th>
+                            <th>Paket Sayisi</th>
                             <th>Latest heard</th>
                             <th>Longest distance</th>
                         </tr>
@@ -58,7 +58,7 @@
                             <td class="longest-distance">
                                 <?php if ($stats["longest_distance"] !== null) : ?>
                                     <?php if (isImperialUnitUser()) : ?>
-                                        <?php echo round(convertKilometerToMile($stats["longest_distance"] / 1000), 2); ?> miles
+                                        <?php echo round(convertKilometerToMile($stats["longest_distance"] / 1000), 2); ?> mil
                                     <?php else : ?>
                                         <?php echo round($stats["longest_distance"] / 1000, 2); ?> km
                                     <?php endif; ?>
@@ -81,8 +81,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Station</th>
-                            <th>Number of packets</th>
+                            <th>İstasyon</th>
+                            <th>Gönderilen Paketler</th>
                             <th>Latest heard</th>
                             <th>Longest distance</th>
                         </tr>

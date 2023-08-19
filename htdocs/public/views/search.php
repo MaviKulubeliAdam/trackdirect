@@ -14,7 +14,7 @@
     $pages = ceil($count / $rows);
 ?>
 
-<title>Station search</title>
+<title>İstasyon Arama</title>
 <div class="modal-inner-content" style="padding-bottom: 30px;">
     <p>
         Search by entering the beginning of the station name/id (or just click search to list all).
@@ -23,10 +23,10 @@
     <form id="station-search-form" method="get" action="">
         <div style="margin-bottom: 5px;">
             <select name ="seconds" style="width: 280px;" id="station-search-form-seconds">
-                <option <?php echo ($seconds == 0 ? 'selected' : ''); ?> value="0">Include all known stations in search</option>
-                <option <?php echo ($seconds == 60 ? 'selected' : ''); ?> value="60">Only stations active latest hour</option>
-                <option <?php echo ($seconds == 360 ? 'selected' : ''); ?> value="360">Only stations active latest 6 hours</option>
-                <option <?php echo ($seconds == 720 ? 'selected' : ''); ?> value="720">Only stations active latest 12 hours</option>
+                <option <?php echo ($seconds == 0 ? 'selected' : ''); ?> value="0">Tüm İstasyonlari Dahil Et</option>
+                <option <?php echo ($seconds == 60 ? 'selected' : ''); ?> value="60">Son 1 Saat içinde Aktif İstasyonlar</option>
+                <option <?php echo ($seconds == 360 ? 'selected' : ''); ?> value="360">Son 6 Saat içinde Aktif İstasyonlar</option>
+                <option <?php echo ($seconds == 720 ? 'selected' : ''); ?> value="720">Son 12 Saat içinde Aktif İstasyonlar</option>
             </select>
         </div>
         <div>
@@ -39,7 +39,7 @@
 
     <?php if (count($stations) > 0) : ?>
         <p>
-            <?php echo $count; ?> result(s):
+            <?php echo $count; ?> Sonuçlar:
         </p>
 
         <?php if ($pages > 1): ?>
@@ -60,7 +60,7 @@
                         <th>Name/Id</th>
                         <th>Latest heard</th>
                         <th>Comment/Other</th>
-                        <th>Map</th>
+                        <th>Harita</th>
 
                     </tr>
                 </thead>

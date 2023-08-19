@@ -5,10 +5,10 @@
     <title><?php echo $station->name; ?> Trail Chart</title>
     <div class="modal-inner-content">
         <div class="modal-inner-content-menu">
-            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Overview</a>
-            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Statistics</a>
+            <a class="tdlink" title="Overview" href="/views/overview.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Özet</a>
+            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">İstatistikler</a>
             <span>Trail Chart</span>
-            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Weather</a>
+            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Hava Durumu</a>
             <a class="tdlink" title="Telemetry" href="/views/telemetry.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Telemetry</a>
             <a class="tdlink" title="Raw packets" href="/views/raw.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Raw packets</a>
         </div>
@@ -22,8 +22,8 @@
 
         <div class="form-container">
             <select id="trail-type" style="float:left; margin-right: 5px;">
-                <option <?php echo (($_GET['type'] ?? 'speed') == 'speed' ? 'selected' : ''); ?> value="speed">Speed</option>
-                <option <?php echo (($_GET['type'] ?? 'speed') == 'altitude' ? 'selected' : ''); ?> value="altitude">Altitude</option>
+                <option <?php echo (($_GET['type'] ?? 'speed') == 'speed' ? 'selected' : ''); ?> value="speed">Hiz</option>
+                <option <?php echo (($_GET['type'] ?? 'speed') == 'altitude' ? 'selected' : ''); ?> value="altitude">Rakim</option>
             </select>
 
             <select id="trail-hours" style="float:left; margin-right: 5px;">
