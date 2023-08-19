@@ -200,7 +200,7 @@
                 </button>
                 <div class="dropdown-content">
                     <?php if (getWebsiteConfig('google_key') != null) : ?>
-                        <a href="/?mapapi=google" title="Switch to Google Maps" <?= ($mapapi=="google"?"class='dropdown-content-checkbox dropdown-content-checkbox-active'":"class='dropdown-content-checkbox'") ?>>Google Maps API</a>
+                        <a href="/?mapapi=google" title="Switch to Google Maps" <?= ($mapapi=="google"?"class='dropdown-content-checkbox dropdown-content-checkbox-active'":"class='dropdown-content-checkbox'") ?>>Google Maps</a>
                     <?php endif; ?>
                     <a href="/?mapapi=leaflet" title="Switch to Leaflet with raster tiles" <?= ($mapapi=="leaflet"?"class='dropdown-content-checkbox  dropdown-content-checkbox-active'":"class='dropdown-content-checkbox'") ?>>Leaflet - Raster Tiles</a>
                     <?php if (getWebsiteConfig('maptiler_key') != null) : ?>
@@ -225,7 +225,7 @@
             <?php endif; ?>
 
             <div class="dropdown">
-                <button class="dropbtn">Ayarlar
+                <button class="dropbtn">Seçenekler
                     <i class="fa fa-caret-down"></i>
                 </button>
 		<div class="dropdown-content" id="tdTopnavSettings">
