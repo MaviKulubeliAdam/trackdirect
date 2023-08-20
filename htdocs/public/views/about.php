@@ -1,10 +1,10 @@
 <?php require dirname(__DIR__) . "../../includes/bootstrap.php"; ?>
 
-<title>About / FAQ</title>
+<title>Hakkinda / SSS</title>
 <div class="modal-inner-content modal-inner-content-about" style="padding-bottom: 30px;">
     <div class="modal-inner-content-menu">
-        <span>About</span>
-        <a href="/views/faq.php" class="tdlink" title="Frequently asked questions">FAQ</a>
+        <span>Hakkinda</span>
+        <a href="/views/faq.php" class="tdlink" title="Frequently asked questions">SSS</a>
     </div>
     <div class="horizontal-line">&nbsp;</div>
 
