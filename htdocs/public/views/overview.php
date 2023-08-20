@@ -2,13 +2,13 @@
 
 <?php $station = StationRepository::getInstance()->getObjectById($_GET['id'] ?? null); ?>
 <?php if ($station->isExistingObject()) : ?>
-    <title><?php echo $station->name; ?> Overview</title>
+    <title><?php echo $station->name; ?> Özet</title>
     <div class="modal-inner-content">
         <div class="modal-inner-content-menu">
-            <span>Overview</span>
-            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Statistics</a>
+            <span>Özet</span>
+            <a class="tdlink" title="Statistics" href="/views/statistics.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">İstatistikler</a>
             <a class="tdlink" title="Trail Chart" href="/views/trail.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Trail Chart</a>
-            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Weather</a>
+            <a class="tdlink" title="Weather" href="/views/weather.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Hava Durumu</a>
             <a class="tdlink" title="Telemetry" href="/views/telemetry.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Telemetry</a>
             <a class="tdlink" title="Raw packets" href="/views/raw.php?id=<?php echo $station->id ?>&imperialUnits=<?php echo $_GET['imperialUnits'] ?? 0; ?>">Raw packets</a>
         </div>
@@ -40,7 +40,7 @@
 
             <?php if ($station->sourceId != null) : ?>
                 <div>
-                    <div class="overview-content-summary-hr">Source:</div>
+                    <div class="overview-content-summary-hr">Kaynak:</div>
                     <div class="overview-content-station" title="Source of this station">
                         <?php echo $station->getSourceDescription(); ?>
                     </div>
@@ -51,7 +51,7 @@
                 <br/>
                 <?php if ($station->getOgnDevice()->registration != null) : ?>
                     <div>
-                        <div class="overview-content-summary-hr">Aircraft Registration:</div>
+                        <div class="overview-content-summary-hr">Hava Taşiti Kaydi:</div>
                         <div class="overview-content-station" title="Aircraft Registration">
                             <b><?php echo htmlspecialchars($station->getOgnDevice()->registration); ?></b>
                         </div>
@@ -70,7 +70,7 @@
 
             <?php if ($station->getOgnDdbAircraftTypeName() !== null) : ?>
                 <div>
-                    <div class="overview-content-summary-hr">Aircraft Type:</div>
+                    <div class="overview-content-summary-hr">Hava Taşiti Türü:</div>
                     <div class="overview-content-station" title="Type of aircraft">
                         <?php echo htmlspecialchars($station->getOgnDdbAircraftTypeName()); ?>
                     </div>
@@ -92,7 +92,7 @@
                 </div>
             <?php else : ?>
                 <div>
-                    <div class="overview-content-summary-hr">Symbol:</div>
+                    <div class="overview-content-summary-hr">Sembol:</div>
                     <div class="overview-content-station" title="Symbol type">
                         <img src="<?php echo $station->getIconFilePath(24, 24); ?>" alt="Latest symbol" />
                         <span>&nbsp;<?php echo htmlentities($station->getLatestSymbolDescription()); ?></span>
@@ -107,13 +107,13 @@
 
                 <div>
                     <div class="overview-content-summary-hr">Latest Packet:</div>
-                    <div class="overview-content-summary-cell-type overview-content-summary-indent"><?php echo $latestPacket->getPacketTypeName(); ?> Packet</div>
+                    <div class="overview-content-summary-cell-type overview-content-summary-indent"><?php echo $latestPacket->getPacketTypeName(); ?> Paket</div>
                 </div>
 
                 <?php $latestPacketSender = SenderRepository::getInstance()->getObjectById($latestPacket->senderId); ?>
                 <?php if ($latestPacketSender->name != $station->name) : ?>
                 <div>
-                    <div class="overview-content-summary-hr-indent">Sender:</div>
+                    <div class="overview-content-summary-hr-indent">Gönderen:</div>
                     <div class="overview-content-summary-indent" title="Sender of current packet">
                         <?php $latestPacketSenderStation = StationRepository::getInstance()->getObjectByNameAndSenderId($latestPacketSender->name, $latestPacketSender->id); ?>
                         <?php if ($latestPacketSenderStation->isExistingObject()) : ?>
@@ -128,7 +128,7 @@
                 <?php endif; ?>
 
                 <div>
-                    <div class="overview-content-summary-hr-indent">Receive Time:</div>
+                    <div class="overview-content-summary-hr-indent">Alinma Zamani:</div>
                     <div title="Timestamp of the latest packet" id="latest-timestamp" class="overview-content-summary-cell-time overview-content-summary-indent">
                         <?php echo $station->latestPacketTimestamp; ?>
                     </div>
